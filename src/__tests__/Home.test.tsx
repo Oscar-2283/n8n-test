@@ -9,4 +9,12 @@ describe('首頁', () => {
     const heading = screen.getByText(/Get started by editing/i);
     expect(heading).toBeInTheDocument();
   });
+
+  it('應該找到不存在的元素（預期會失敗）', () => {
+    render(<Page />);
+    
+    // 嘗試查找一個頁面上不存在的元素，這會導致測試失敗
+    const nonExistentElement = screen.getByText('這個元素不存在於頁面中');
+    expect(nonExistentElement).toBeInTheDocument();
+  });
 });
